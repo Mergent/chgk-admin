@@ -64,7 +64,7 @@ const App = (props) => {
         entrypoint={entrypoint}
     >
         <ResourceGuesser
-          name='team_tournaments'
+          name='countries'
           list={TeamTournamentsList} 
         />
     </HydraAdmin>
