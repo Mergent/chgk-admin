@@ -9,9 +9,6 @@ export function fetchAuthentication(baseUrl, dispatch) {
   
   axios.post(`${baseUrl}authentication_token`, params)
     .then((response) => {
-      console.log(response);
       localStorage.setItem('token', response.data.token);
-      console.log("LOG -> .then -> localStorage", localStorage)
-      dispatch({type: 'updateToken', payload: response.data.token});
     })
 }

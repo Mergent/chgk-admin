@@ -9,7 +9,7 @@ import { parseHydraDocumentation } from "@api-platform/api-doc-parser";
 import { Context } from './state';
 import { fetchAuthentication } from './sagas/authenticationSaga';
 import ResourceGuesser from '@api-platform/admin/lib/ResourceGuesser';
-import TeamTournamentsList from './components/TeamTournaments';
+import CountriesList from './components/Countries';
 
 const App = (props) => {
   const [ state, dispatch ] = useContext(Context);
@@ -59,14 +59,20 @@ const App = (props) => {
 
 
   return (
-    <HydraAdmin
-        dataProvider={dataProvider}
-        entrypoint={entrypoint}
-    >
-        <ResourceGuesser
-          name='countries'
-          list={TeamTournamentsList} 
-        />
+    <HydraAdmin dataProvider={dataProvider} entrypoint={entrypoint}>
+        <ResourceGuesser name='countries' list={CountriesList} />
+        <ResourceGuesser name='players' />
+        <ResourceGuesser name='regions' />
+        <ResourceGuesser name='releases' />
+        <ResourceGuesser name='seasons' />
+        <ResourceGuesser name='teams' />
+        <ResourceGuesser name='team_tournaments' />
+        <ResourceGuesser name='tournaments' />
+        <ResourceGuesser name='tournament_flags' />
+        <ResourceGuesser name='tournament_positions' />
+        <ResourceGuesser name='tournament_types' />
+        <ResourceGuesser name='towns' />
+        <ResourceGuesser name='venues' />
     </HydraAdmin>
   )
 }
