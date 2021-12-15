@@ -1,11 +1,12 @@
 import FieldGuesser from "@api-platform/admin/lib/FieldGuesser";
 import ListGuesser from "@api-platform/admin/lib/ListGuesser";
-import { TextField } from "react-admin";
+import { Pagination } from "react-admin";
 
+const CountriesPagination = props => <Pagination rowsPerPageOptions={[30, 100, 500]} {...props} />;
 
 const CountriesList = (props) => {
     return (
-    <ListGuesser {...props}>
+    <ListGuesser {...props} pagination={<CountriesPagination />}>
       <FieldGuesser source="name" />
     </ListGuesser>
   )
