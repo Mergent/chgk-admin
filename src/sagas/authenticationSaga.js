@@ -5,7 +5,7 @@ export const authProvider = {
       password,
     }
 
-    const request = new Request('https://api.rating.chgk.net/authentication_token', {
+    const request = new Request(`${localStorage.getItem('apiUrl')}/authentication_token`, {
       method: 'POST',
       body: JSON.stringify(params),
       headers: new Headers({ 'Content-Type': 'application/json' }),

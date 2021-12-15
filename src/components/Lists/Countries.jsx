@@ -4,7 +4,6 @@ import { TextField } from "react-admin";
 
 
 const CountriesList = (props) => {
-  console.log(props);
     return (
     <ListGuesser {...props}>
       <FieldGuesser source="name" />

@@ -52,17 +52,15 @@ const Admin = (props) => {
     }
   };
 
-  const entrypoint = 'https://api.rating.chgk.net';
-
   const dataProvider = baseHydraDataProvider({
-    entrypoint,
+    entrypoint: localStorage.getItem('apiUrl'),
     httpClient: fetchHydra,
     apiDocumentationParser,
     mercure: true,
   });
 
   return (
-    <HydraAdmin dataProvider={dataProvider} entrypoint={entrypoint} authProvider={authProvider}>
+    <HydraAdmin dataProvider={dataProvider} entrypoint={localStorage.getItem('apiUrl')} authProvider={authProvider}>
         <ResourceGuesser name='countries' list={CountriesList} />
         <ResourceGuesser name='players' />
         <ResourceGuesser name='regions' />
