@@ -1,10 +1,10 @@
 export const reducer = (state, action) => {
   switch (action.type) {
-    case "updateToken":
+    case "isAuthentication":
       console.log("LOG -> reducer -> action", action)
       return {
         ...state,
-        baseUrl: action.payload,
+        isAuthentication: action.payload,
       }
 
     default:
@@ -14,5 +14,5 @@ export const reducer = (state, action) => {
 
 export const initialState = {
   baseUrl: 'https://api.rating.chgk.net/',
-  token: '',
+  isAuthentication: false,
 }
