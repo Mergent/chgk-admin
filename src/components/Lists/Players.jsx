@@ -1,11 +1,9 @@
 import { Pagination, List, TextField, Datagrid, EditButton, Resource, Edit, SimpleForm, TextInput, required, Create, ReferenceInput, SelectInput, SearchInput } from "react-admin";
 import { makeStyles } from '@material-ui/core/styles';
 
-const CountriesPage = (props) => <Resource name='countries' list={CountriesList} edit={CountriesEdit} />
+const PlayersPagination = props => <Pagination rowsPerPageOptions={[10, 30, 100]} {...props} />;
 
-const CountriesPagination = props => <Pagination rowsPerPageOptions={[10, 30, 100]} {...props} />;
-
-const countiesFilters = [
+const playersFilters = [
   <SearchInput source="name" alwaysOn />,
   // <ReferenceInput source="userId" label="User" reference="users" allowEmpty>
   //     <SelectInput optionText="name" />
@@ -21,7 +19,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const CountriesEdit = (props) => (
+export const PlayersEdit = (props) => (
   <Edit {...props}>
       <SimpleForm>
           <TextInput disabled label="Id" source="id" />
@@ -30,7 +28,7 @@ export const CountriesEdit = (props) => (
   </Edit>
 );
 
-export const CountriesCreate = (props) => (
+export const PlayersCreate = (props) => (
   <Create {...props}>
       <SimpleForm>
           <TextInput source="name" />
@@ -38,16 +36,17 @@ export const CountriesCreate = (props) => (
   </Create>
 );
 
-export const CountriesList = (props) => {
+export const PlayersList = (props) => {
+console.log("LOG -> PlayersList -> props", props)
   const classes = useStyles();
   return (
-    <List {...props} pagination={<CountriesPagination />} filters={countiesFilters}>
+    <List {...props} pagination={<PlayersPagination />} filters={playersFilters}>
       <Datagrid classes={classes}>
+        <TextField source="surname" />
         <TextField source="name" />
+        <TextField source="patronymic" />
         <EditButton />
       </Datagrid>
     </List>
   )
 };
-
-export default CountriesPage;
