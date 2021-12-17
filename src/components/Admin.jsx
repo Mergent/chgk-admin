@@ -66,21 +66,9 @@ const Admin = (props) => {
     mercure: true,
   });
 
-  const theme = createTheme({
-    overrides: {
-      // Style sheet name ⚛️
-      MuiButton: {
-        // Name of the rule
-        text: {
-          // Some CSS
-          color: 'white',
-        },
-      },
-    },
-  });
 
   return (
-    <HydraAdmin theme={theme} layout={MyLayout} dataProvider={dataProvider} entrypoint={localStorage.getItem('apiUrl')} authProvider={authProvider}>
+    <HydraAdmin layout={MyLayout} dataProvider={dataProvider} entrypoint={localStorage.getItem('apiUrl')} authProvider={authProvider}>
       <Resource name='countries' list={CountriesList} edit={CountriesEdit} create={CountriesCreate} />
       <Resource name='players' list={PlayersList} edit={PlayersEdit} create={PlayersCreate} />
       <ResourceGuesser name='players' />

@@ -1,9 +1,8 @@
 import { Pagination, List, TextField, Datagrid, EditButton, Resource, Edit, SimpleForm, TextInput, required, Create, ReferenceInput, SelectInput, SearchInput } from "react-admin";
 import { makeStyles } from '@material-ui/core/styles';
+import { CustomPagination, rowStyle, styles } from "./styles";
 
-const CountriesPage = (props) => <Resource name='countries' list={CountriesList} edit={CountriesEdit} />
-
-const CountriesPagination = props => <Pagination rowsPerPageOptions={[10, 30, 100]} {...props} />;
+// const CountriesPagination = props => <Pagination rowsPerPageOptions={[10, 30, 100]} {...props} />;
 
 const countiesFilters = [
   <SearchInput source="name" alwaysOn />,
@@ -11,18 +10,6 @@ const countiesFilters = [
   //     <SelectInput optionText="name" />
   // </ReferenceInput>,
 ];
-
-const useStyles = makeStyles({
-  table: {
-      backgroundColor: '#f4f0cb',
-  },
-  headerCell: {
-      backgroundColor: '#f8f8f8',
-      'border-color': '#e7e7e7',
-      'border-radius': '4px',
-      'color': '#555',
-  },
-});
 
 export const CountriesEdit = (props) => (
   <Edit {...props}>
@@ -42,15 +29,12 @@ export const CountriesCreate = (props) => (
 );
 
 export const CountriesList = (props) => {
-  const classes = useStyles();
   return (
-    <List {...props} pagination={<CountriesPagination />} filters={countiesFilters}>
-      <Datagrid classes={classes}>
+    <List {...props} pagination={<CustomPagination />} filters={countiesFilters}>
+      <Datagrid classes={makeStyles(styles)()} rowStyle={rowStyle}>
         <TextField source="name" />
         <EditButton />
       </Datagrid>
     </List>
   )
 };
-
-export default CountriesPage;

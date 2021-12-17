@@ -2,9 +2,9 @@ import { Menu } from 'react-admin';
 import { withStyles } from '@material-ui/core/styles';
 
 const styles = {
-    // menu: {
-    //     backgroundColor: 'red',
-    // },
+  sidebar: {
+    backgroundColor: 'red',
+  }
 };
 
 const MyMenu = ({ classes, ...props }) => (
