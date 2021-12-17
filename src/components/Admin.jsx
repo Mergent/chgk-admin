@@ -8,9 +8,14 @@ import { parseHydraDocumentation } from "@api-platform/api-doc-parser";
 import ResourceGuesser from '@api-platform/admin/lib/ResourceGuesser';
 import { Redirect, Route } from "react-router-dom";
 import { authProvider } from "../sagas/authenticationSaga";
-import { Resource } from "react-admin";
+import { Resource, defaultTheme } from "react-admin";
 import { CountriesCreate, CountriesEdit, CountriesList } from "./Lists/Countries";
 import { PlayersCreate, PlayersEdit, PlayersList } from "./Lists/Players";
+import { createTheme } from '@material-ui/core/styles';
+import { createMuiTheme } from '@material-ui/core/styles';
+import MyLayout from "./Layout/Layout";
+import { purple } from '@material-ui/core/colors';
+import { VenuesCreate, VenuesEdit, VenuesList } from "./Lists/Venues";
 
 const Admin = (props) => {
   const getHeaders = () => localStorage.getItem("token") ? {
@@ -61,8 +66,21 @@ const Admin = (props) => {
     mercure: true,
   });
 
+  const theme = createTheme({
+    overrides: {
+      // Style sheet name ⚛️
+      MuiButton: {
+        // Name of the rule
+        text: {
+          // Some CSS
+          color: 'white',
+        },
+      },
+    },
+  });
+
   return (
-    <HydraAdmin dataProvider={dataProvider} entrypoint={localStorage.getItem('apiUrl')} authProvider={authProvider}>
+    <HydraAdmin theme={theme} layout={MyLayout} dataProvider={dataProvider} entrypoint={localStorage.getItem('apiUrl')} authProvider={authProvider}>
       <Resource name='countries' list={CountriesList} edit={CountriesEdit} create={CountriesCreate} />
       <Resource name='players' list={PlayersList} edit={PlayersEdit} create={PlayersCreate} />
       <ResourceGuesser name='players' />
@@ -74,7 +92,7 @@ const Admin = (props) => {
       <ResourceGuesser name='tournament_flags' />
       <ResourceGuesser name='tournament_types' />
       <ResourceGuesser name='towns' />
-      <ResourceGuesser name='venues' />
+      <Resource name='venues' list={VenuesList} edit={VenuesEdit} create={VenuesCreate} />
     </HydraAdmin>
   )
 }

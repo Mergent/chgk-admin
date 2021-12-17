@@ -12,10 +12,13 @@ const playersFilters = [
 
 const useStyles = makeStyles({
   table: {
-      backgroundColor: 'Lavender',
+      backgroundColor: '#f4f0cb',
   },
   headerCell: {
-      backgroundColor: 'MistyRose',
+      backgroundColor: '#f8f8f8',
+      'border-color': '#e7e7e7',
+      'border-radius': '4px',
+      'color': '#555',
   },
 });
 
@@ -37,7 +40,6 @@ export const PlayersCreate = (props) => (
 );
 
 export const PlayersList = (props) => {
-console.log("LOG -> PlayersList -> props", props)
   const classes = useStyles();
   return (
     <List {...props} pagination={<PlayersPagination />} filters={playersFilters}>
