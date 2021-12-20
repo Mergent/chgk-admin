@@ -16,6 +16,7 @@ import { createMuiTheme } from '@material-ui/core/styles';
 import MyLayout from "./Layout/Layout";
 import { purple } from '@material-ui/core/colors';
 import { VenuesCreate, VenuesEdit, VenuesList } from "./Lists/Venues";
+import { RegionsCreate, RegionsEdit, RegionsList } from "./Lists/Regions";
 
 const Admin = (props) => {
   const getHeaders = () => localStorage.getItem("token") ? {
@@ -71,8 +72,7 @@ const Admin = (props) => {
     <HydraAdmin layout={MyLayout} dataProvider={dataProvider} entrypoint={localStorage.getItem('apiUrl')} authProvider={authProvider}>
       <Resource name='countries' list={CountriesList} edit={CountriesEdit} create={CountriesCreate} />
       <Resource name='players' list={PlayersList} edit={PlayersEdit} create={PlayersCreate} />
-      <ResourceGuesser name='players' />
-      <ResourceGuesser name='regions' />
+      <Resource name='regions' list={RegionsList} edit={RegionsEdit} create={RegionsCreate} />
       <ResourceGuesser name='releases' />
       <ResourceGuesser name='seasons' />
       <ResourceGuesser name='teams' />
