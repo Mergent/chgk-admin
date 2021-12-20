@@ -1,12 +1,8 @@
-import { List, TextField, Datagrid, EditButton, Edit, SimpleForm, TextInput, required, Create, SearchInput } from "react-admin";
+import { List, TextField, Datagrid, EditButton, Edit, SimpleForm, TextInput, required, Create } from "react-admin";
 import { makeStyles } from '@material-ui/core/styles';
 import { CustomPagination, rowStyle, styles } from "./styles";
 
-const countiesFilters = [
-  <SearchInput source="name" alwaysOn />,
-];
-
-export const CountriesEdit = (props) => (
+export const TournamentTypeEdit = (props) => (
   <Edit {...props}>
     <SimpleForm>
       <TextInput disabled label="Id" source="id" />
@@ -15,7 +11,7 @@ export const CountriesEdit = (props) => (
   </Edit>
 );
 
-export const CountriesCreate = (props) => (
+export const TournamentTypeCreate = (props) => (
   <Create {...props}>
     <SimpleForm>
       <TextInput source="name" />
@@ -23,8 +19,8 @@ export const CountriesCreate = (props) => (
   </Create>
 );
 
-export const CountriesList = (props) => (
-  <List {...props} pagination={<CustomPagination />} filters={countiesFilters}>
+export const TournamentTypeList = (props) => (
+  <List {...props} pagination={<CustomPagination />}>
     <Datagrid classes={makeStyles(styles)()} rowStyle={rowStyle}>
       <TextField source="name" />
       <EditButton />

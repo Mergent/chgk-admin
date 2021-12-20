@@ -27,7 +27,8 @@ export const VenuesCreate = (props) => (
   <Create {...props}>
     <SimpleForm>
       <TextInput source="name" />
-      <ReferenceInput label="Town" source="town" reference="towns" perPage={100} >
+      {/* TODO: perPage={-1} */}
+      <ReferenceInput label="Town" source="town" reference="towns" perPage={1400} >
         <AutocompleteInput optionText="name" suggestionLimit={10} />
       </ReferenceInput>
       <SelectInput label="Type Id" source="typeId" choices={[
