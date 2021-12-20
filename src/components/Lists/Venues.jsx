@@ -1,7 +1,6 @@
-import { Pagination, List, TextField, Datagrid, EditButton, Resource, Edit, SimpleForm, TextInput, required, Create, ReferenceInput, SelectInput, SearchInput } from "react-admin";
+import { Pagination, List, TextField, Datagrid, EditButton, Resource, Edit, SimpleForm, TextInput, required, Create, ReferenceInput, SelectInput, SearchInput, AutocompleteInput } from "react-admin";
 import { makeStyles } from '@material-ui/core/styles';
-
-const VenuesPagination = props => <Pagination rowsPerPageOptions={[10, 30, 100]} {...props} />;
+import { CustomPagination, rowStyle, styles } from "./styles";
 
 const venuesFilters = [
   <SearchInput source="name" alwaysOn />,
@@ -10,40 +9,34 @@ const venuesFilters = [
   // </ReferenceInput>,
 ];
 
-const useStyles = makeStyles({
-  table: {
-      backgroundColor: '#f4f0cb',
-  },
-  headerCell: {
-      backgroundColor: '#f8f8f8',
-      'border-color': '#e7e7e7',
-      'border-radius': '4px',
-      'color': '#555',
-  },
-});
-
-export const VenuesEdit = (props) => (
+export const VenuesEdit = (props) => {
+console.log("LOG -> props", props)
+  return (
   <Edit {...props}>
       <SimpleForm>
           <TextInput disabled label="Id" source="id" />
           <TextInput source="name" validate={required()} />
       </SimpleForm>
   </Edit>
-);
+  )};
 
-export const VenuesCreate = (props) => (
+export const VenuesCreate = (props) => {
+console.log("LOG -> VenuesCreate -> props", props)
+  return (
   <Create {...props}>
       <SimpleForm>
           <TextInput source="name" />
+          <ReferenceInput label="Town" source="town" reference="towns" perPage={100} >
+            <AutocompleteInput optionText="name" suggestionLimit={10} />
+          </ReferenceInput>
       </SimpleForm>
   </Create>
-);
+)};
 
 export const VenuesList = (props) => {
-  const classes = useStyles();
   return (
-    <List {...props} pagination={<VenuesPagination />} filters={venuesFilters}>
-      <Datagrid classes={classes}>
+    <List {...props} pagination={<CustomPagination />} filters={venuesFilters}>
+      <Datagrid classes={makeStyles(styles)()} rowStyle={rowStyle}>
         <TextField source="name" />
         <EditButton />
       </Datagrid>
