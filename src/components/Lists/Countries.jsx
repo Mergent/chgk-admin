@@ -7,7 +7,7 @@ const countiesFilters = [
 ];
 
 export const CountriesEdit = (props) => (
-  <Edit {...props}>
+  <Edit mutationMode="undoable" {...props}>
     <SimpleForm>
       <TextInput disabled label="Id" source="id" />
       <TextInput source="name" validate={required()} />

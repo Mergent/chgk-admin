@@ -7,7 +7,7 @@ const playersFilters = [
 ];
 
 export const PlayersEdit = (props) => (
-  <Edit {...props}>
+  <Edit mutationMode="undoable" {...props}>
     <SimpleForm>
       <TextInput disabled label="Id" source="id" />
       <TextInput source="name" validate={required()} />

@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { CustomPagination, rowStyle, styles } from "./styles";
 
 export const TournamentTypeEdit = (props) => (
-  <Edit {...props}>
+  <Edit mutationMode="undoable" {...props}>
     <SimpleForm>
       <TextInput disabled label="Id" source="id" />
       <TextInput source="name" validate={required()} />

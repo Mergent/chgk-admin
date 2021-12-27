@@ -7,10 +7,10 @@ const venuesFilters = [
 ];
 
 export const VenuesEdit = (props) => (
-  <Edit {...props}>
+  <Edit mutationMode="undoable" {...props}>
     <SimpleForm>
     <TextInput source="name" />
-      <ReferenceInput label="Town" source="town" reference="towns" perPage={100} >
+      <ReferenceInput label="Town" source="town" reference="towns" perPage={1400} >
         <AutocompleteInput optionText="name" suggestionLimit={10} />
       </ReferenceInput>
       <SelectInput label="Type Id" source="typeId" choices={[
