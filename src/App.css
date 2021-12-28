@@ -18,3 +18,7 @@ body .MuiAppBar-colorSecondary {
   background-color: #f8f8f8;
   color: black;
 }
+
+.urls-show-more-button {
+  float: right;
+}
